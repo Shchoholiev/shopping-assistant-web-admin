@@ -1,0 +1,22 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Recipes Manager Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="users">Users</a>
+                    </li>
+                </ul>
+                <span class="navbar-text d-flex gap-2 nav-item align-items-center">
+                    Welcome, {{ globalUser?.name ?? globalUser?.email }}
+                    <button class="btn btn-link nav-link" (click)="onLogout()">Logout</button>
+                </span>
+            </div>
+        </div>
+    </nav>
+</div>
