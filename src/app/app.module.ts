@@ -10,6 +10,9 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { PaginationComponent } from './pagination/pagination.component';
+import { UsersPageComponent } from './users/users-page/users-page.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 export function tokenGetter() {
   return localStorage.getItem('accessToken');
@@ -22,6 +25,9 @@ export function tokenGetter() {
     LoginComponent,
     HeaderComponent,
     FooterComponent,
+    PaginationComponent,
+    UsersPageComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,

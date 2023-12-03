@@ -1,0 +1,44 @@
+<div>
+    <div *ngIf="updateError" class="alert alert-danger my-2 d-flex align-items-center py-2 justify-content-between" role="alert">
+      {{ updateError }}
+    </div>
+    <div *ngIf="updateSuccess" class="alert alert-success my-2 d-flex align-items-center py-2 justify-content-between" role="alert">
+      {{ updateSuccess }}
+    </div>
+
+    <h1>Edit User</h1>
+
+    <form (ngSubmit)="submitForm()" #form="ngForm" class="d-flex gap-3 flex-column">
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input type="text" class="form-control" id="userId" name="userId" [(ngModel)]="user.id" disabled>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="user.phone">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" [(ngModel)]="user.email">
+      </div>
+      <div class="form-group">
+        <label for="roles">Roles:</label>
+        <select class="form-control" id="roles" name="roles" [(ngModel)]="selectedRole">
+          <option *ngFor="let role of availableRoles" [ngValue]="role">{{ role.name }}</option>
+        </select>
+        <button type="button" class="btn btn-primary mt-2" (click)="addRole()">Add Role</button>
+      </div>
+      <div class="form-group">
+        <label>Selected Roles:</label>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between" *ngFor="let role of user.roles">
+            {{ role.name }}
+            <button type="button" class="btn btn-danger btn-sm float-right" (click)="removeRole(role)">Remove</button>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
