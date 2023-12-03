@@ -70,7 +70,10 @@ export class AuthService {
     };
     return this.apiService.query(query, variables)
       .pipe(map(response => {
-        const tokens = response.data.refreshUserToken;
+        console.log(response);
+        
+
+        const tokens = response.data.refreshAccessToken;
         localStorage.setItem('accessToken', tokens.accessToken);
         localStorage.setItem('refreshToken', tokens.refreshToken);
 
@@ -96,6 +99,8 @@ export class AuthService {
         console.log('Refreshed tokens.');
         return true;
       }), catchError(error => {
+        console.log(error);
+        
         console.error('Failed to refresh tokens.');
         this.logout();
         return of(false);
