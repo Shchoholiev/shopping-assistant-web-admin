@@ -1,27 +1,88 @@
-# ShoppingAssistantWebAdmin
+# shopping-assistant-web-admin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+A web administration panel for managing users and roles, built with Angular, featuring user authentication, pagination, and user editing capabilities.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)  
+- [Stack](#stack)  
+- [Installation](#installation)  
+  - [Prerequisites](#prerequisites)  
+  - [Setup Instructions](#setup-instructions)  
+- [Configuration](#configuration)  
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- User login with email or phone and password authentication  
+- JWT token-based authentication with route guarding  
+- User listing with paginated views  
+- Edit user details including phone, email, and roles  
+- Add and remove roles for users  
+- Responsive layout with header and footer components  
+- API integration via GraphQL and REST for backend communication  
 
-## Build
+## Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 16  
+- TypeScript  
+- Bootstrap 5  
 
-## Running unit tests
+## Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Prerequisites
 
-## Running end-to-end tests
+- Node.js (version 18 recommended)  
+- npm (comes with Node.js)  
+- Angular CLI (`npm install -g @angular/cli@16.0.0`)  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Setup Instructions
 
-## Further help
+1. Clone the repository:  
+```sh
+git clone https://github.com/Shchoholiev/shopping-assistant-web-admin.git
+cd shopping-assistant-web-admin
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Install project dependencies:  
+```sh
+npm install
+```
+
+3. Run the development server:  
+```sh
+npm start
+```
+
+4. Access the app at:  
+```
+http://localhost:4200/
+```
+
+5. Run unit tests with Karma:  
+```sh
+npm test
+```
+
+## Configuration
+
+Environment configuration files are located in `src/environments/`. The base API URL should be set according to your deployment:
+
+- `environment.ts` & `environment.development.ts` (for development):  
+```ts
+export const environment = {
+  production: false,
+  apiUrl: 'https://shopping-assistant-api-dev.azurewebsites.net'
+};
+```
+
+- `environment.production.ts` (for production):  
+```ts
+export const environment = {
+  production: true,
+  apiUrl: 'https://shopping-assistant-api.azurewebsites.net'
+};
+```
+
+The application uses local storage to store JWT access and refresh tokens under keys `accessToken` and `refreshToken`. Make sure your backend supports the authentication GraphQL schema as expected.
+
+Additional configuration for IIS hosting can be set in the `src/web.config` file, which rewrites routes for Angular's client-side routing and configures caching rules for JavaScript files.
